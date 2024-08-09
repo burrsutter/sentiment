@@ -1,0 +1,47 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "sentiment"
+  description: "A cool quarkus sentiment app"
+  annotations:
+    argocd/app-selector: rht-gitops.com/janus-argocd=sentiment-bootstrap
+    backstage.io/kubernetes-id: sentiment
+    janus-idp.io/tekton: sentiment
+    backstage.io/source-location: url:https://gitlab-gitlab.apps.cluster-gmtv9.gmtv9.sandbox2066.opentlc.com/development/sentiment
+    backstage.io/techdocs-ref: url:https://gitlab-gitlab.apps.cluster-gmtv9.gmtv9.sandbox2066.opentlc.com/development/sentiment
+    gitlab.com/project-slug: development/sentiment
+    quay.io/repository-slug: "quayadmin/sentiment"
+  tags:
+    - java
+    - quarkus
+  links:
+    - url: https://devspaces.apps.cluster-gmtv9.gmtv9.sandbox2066.opentlc.com/#https://gitlab-gitlab.apps.cluster-gmtv9.gmtv9.sandbox2066.opentlc.com/development/sentiment
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: https://devspaces.apps.cluster-gmtv9.gmtv9.sandbox2066.opentlc.com/#https://gitlab-gitlab.apps.cluster-gmtv9.gmtv9.sandbox2066.opentlc.com/development/sentiment?che-editor=che-incubator/che-idea/latest
+      title: OpenShift Dev Spaces (JetBrains IntelliJ)
+      icon: web
+    - url: https://rhods-dashboard-redhat-ods-applications.apps.cluster-gmtv9.gmtv9.sandbox2066.opentlc.com/projects/sentiment-ai?section=overview
+      title: RHOAI Data Science Project
+      icon: web
+    - url: https://my-workbench-sentiment-ai.apps.cluster-gmtv9.gmtv9.sandbox2066.opentlc.com/notebook/sentiment-ai/my-workbench
+      title: Workbench Notebook
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user1"
+  providesApis:
+    - "sentiment"
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: "sentiment"
+  description: "A cool quarkus sentiment app"
+spec:
+  type: openapi
+  lifecycle: production
+  owner: "user1"
+  definition:
+    $text: ./openapi.yaml
